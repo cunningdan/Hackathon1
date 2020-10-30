@@ -12,7 +12,7 @@ class CharacterService {
 		ProxyState.characters = res.data.map((rawCharacterData) => new Character(rawCharacterData));
 	}
 
-	async addCharacter()
+	async addCharacter() {}
 }
 
 export const characterService = new CharacterService();

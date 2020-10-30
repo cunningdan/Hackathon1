@@ -42,7 +42,10 @@ export default class CharacterController {
 	addCharacter(e) {
 		let form = e.target;
 		e.preventDefault();
-		let newCharacter = {}
+		let newCharacter = {
+			name: form.name.value,
+			class: 
+		}
 		try {
 			characterService.addCharacter();
 		} catch (error) {
