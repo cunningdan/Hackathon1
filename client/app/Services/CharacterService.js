@@ -10,9 +10,12 @@ class CharacterService {
 		// ProxyState.characters = await api.get('characters').data;
 		let res = await api.get('characters');
 		ProxyState.characters = res.data.map((rawCharacterData) => new Character(rawCharacterData));
+		console.log(res);
 	}
 
-	async addCharacter() {}
+	async addCharacter(newCharacter) {
+		let res = await api.post('characters', newCharacter);
+	}
 }
 
 export const characterService = new CharacterService();

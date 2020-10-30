@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-const Schema = mongoose.Schema
+import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-const ObjectId = Schema.Types.ObjectId
+const ObjectId = Schema.Types.ObjectId;
 const Character = new Schema(
     {
         name: { type: String, required: true },
