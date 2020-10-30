@@ -4,7 +4,7 @@ import Character from "../models/Character";
 
 class CharacterService {
     async getAll(query = {}) {
-        return await dbContext.Characters.find(query)
+        return await dbContext.Characters.find(query).populate('user')
     }
     async create(body) {
         return await dbContext.Characters.create(body)
@@ -22,7 +22,7 @@ class CharacterService {
         } return this.getAll()
     }
     async findById(id) {
-        return await dbContext.Characters.findById(id)
+        return await dbContext.Characters.findById(id).populate("user")
     }
 }
 

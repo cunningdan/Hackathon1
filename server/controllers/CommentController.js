@@ -1,0 +1,51 @@
+import BaseController from "../utils/BaseController";
+import { commentService } from "../services/CommentService";
+
+export class CommentController extends BaseController {
+    constructor() {
+        super("api/comments");
+        this.router
+            .get("", this.getAll)
+            .post("", this.create)
+            .put("/:id", this.edit)
+            .delete("/:id", this.delete)
+            .get("/:commentId", this.findOne)
+
+    }
+    async getAll(req, res, next) {
+        try {
+            res.send(await commentService.getAll(req.query));
+        } catch (error) {
+            next(error);
+        }
+    }
+    async create(req, res, next) {
+        try {
+            let data = await commentService.create(req.body)
+            res.send(data);
+        } catch (error) {
+            next(error);
+        }
+    }
+    async delete(req, res, next) {
+        try {
+            res.send(await commentService.delete(req.params.id))
+        } catch (err) {
+            next(err)
+        }
+    }
+    async edit(req, res, next) {
+        try {
+            res.send(await commentService.edit(req.params.id, req.body))
+        } catch (err) {
+            next(err)
+        }
+    }
+    async findOne(req, res, next) {
+        try {
+            res.send(await commentService.findById(req.params.commentId))
+        } catch (err) {
+            next(err)
+        }
+    }
+}
