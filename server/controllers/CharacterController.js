@@ -43,7 +43,7 @@ export class CharacterController extends BaseController {
     }
     async findOne(req, res, next) {
         try {
-            res.send(await characterService.findById(req.params.galaxyId))
+            res.send(await characterService.findById(req.params.characterId))
         } catch (err) {
             next(err)
         }
