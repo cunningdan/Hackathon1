@@ -1,5 +1,5 @@
 import { ProxyState } from '../AppState.js';
-import { characterService } from '../Services/CharacterService.js';
+import { userService } from '../Services/UserService.js';
 
 //Private
 function _draw() {
