@@ -1,4 +1,6 @@
 import { dbContext } from "../db/DbContext";
+import Profile from "../models/Profile";
+import { BadRequest } from "../utils/Errors";
 
 // Private Methods
 
@@ -50,12 +52,20 @@ class ProfileService {
    * Provided an array of user ids will return an array of user profiles with email picture and name
    * @param {String[]} ids Array of email addresses to lookup users by
    */
-  async getProfiles(ids = []) {
+  async getProfilesbyEmail(ids = []) {
     let profiles = await dbContext.Profile.find({
       _id: { $in: ids }
     }).select("email picture name");
     return profiles;
   }
+  async getProfiles(query = {}, email) {
+    if (email == 'cunningdan@hotmail.com') {
+      return await dbContext.Profile.find(query).populate("email")
+    } else {
+      throw new BadRequest('go away')
+    }
+  }
+
 
   /**
    * Returns a user profile from the Auth0 user object

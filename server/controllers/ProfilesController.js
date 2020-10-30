@@ -11,6 +11,15 @@ export class ProfilesController extends BaseController {
       .get("/:id", this.getUserProfile)
       .get("/:id/characters", this.getCharactersByProfile)
       .put("/:id", this.editProfile)
+      .get("", this.getProfiles)
+  }
+  async getProfiles(req, res, next) {
+    try {
+      let profiles = await profilesService.getProfiles(req.query, req.userInfo.email)
+      res.send(profiles)
+    } catch (err) {
+      next(err)
+    }
   }
   async getUserProfile(req, res, next) {
     try {
