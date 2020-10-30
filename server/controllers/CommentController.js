@@ -1,11 +1,14 @@
 import BaseController from "../utils/BaseController";
 import { commentService } from "../services/CommentService";
+import { Auth0Provider } from "@bcwdev/auth0provider";
+
 
 export class CommentController extends BaseController {
     constructor() {
         super("api/comments");
         this.router
             .get("", this.getAll)
+            .use(Auth0Provider.getAuthorizedUserInfo)
             .post("", this.create)
             .put("/:id", this.edit)
             .delete("/:id", this.delete)
