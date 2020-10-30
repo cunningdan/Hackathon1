@@ -7,7 +7,7 @@ const Character = new Schema(
         name: { type: String, required: true },
         class: { type: String, required: true },
         skills: { type: String },
-        profile: { type: String, required: true },
+        profile: { type: ObjectId, ref: 'Profile', required: true },
         img: { type: String }
     },
     { timestamps: true, toJSON: { virtuals: true } }

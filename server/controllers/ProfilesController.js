@@ -8,9 +8,9 @@ export class ProfilesController extends BaseController {
     super("api/profiles");
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get("/:id", this.getUserProfile)
       .get("/:id/characters", this.getCharactersByProfile)
       .put("/:id", this.editProfile)
+      .get("/:id", this.getUserProfile)
       .get("", this.getProfiles)
   }
   async getProfiles(req, res, next) {
