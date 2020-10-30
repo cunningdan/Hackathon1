@@ -1,14 +1,11 @@
-// export default class Character {
-// 	constructor(data) {
-// 		this.name = data.name;
-// 		this.class = data.class;
-// 		this.id = data._id;
-// 		this.userId = data.userId;
-// 		this.skills = data.skills;
-// 		this.img = data.img;
-// 		this.profileName = data.profile.name;
-// 	}
-// 	// <img src="${this.img}" class="d-block img-fluid" alt="...">
+export default class User {
+	constructor(data) {
+		this.id = data._id;
+		this.email = data.email;
+		this.name = data.name;
+		this.image = data.picture;
+	}
+	// 	// <img src="${this.img}" class="d-block img-fluid" alt="...">
 
 	get UserTemplate() {
 		return /*html*/ `
@@ -26,9 +23,9 @@
             </ul>
         </div>
         `;
-    }
-    
-    get CharacterNameTemplate() {
+	}
+
+	get CharacterNameTemplate() {
 		return /*html*/ `
         <li>character name</li>
         `;

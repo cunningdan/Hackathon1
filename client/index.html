@@ -24,10 +24,10 @@
                 <div class="navbar-nav">
                 </div>
             </div>
-            <button type="button" class="btn btn-primary" data-toggle="profileModal" data-target="#profileModal">
+            <button type="button" onclick="app.userController.getUserCharacters()" class="btn btn-primary" data-toggle="modal" data-target="#profileModal">
                 Profile Modal
             </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div id="userTemplate" class="modal-content">
                         <!-- user template -->

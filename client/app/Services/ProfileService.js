@@ -1,16 +1,16 @@
-import { ProxyState } from '../AppState.js'
-import { api } from './AxiosService.js'
+import { ProxyState } from '../AppState.js';
+import { api } from './AxiosService.js';
 
 class ProfileService {
-  async getProfile() {
-    try {
-      const res = await api.get('/profile')
-      ProxyState.profile = res.data
-      console.log(res.data)
-    } catch (err) {
-      console.error(err)
-    }
-  }
+	async getProfile() {
+		try {
+			const res = await api.get('/profiles');
+			ProxyState.profile = res.data;
+			console.log(res.data);
+		} catch (err) {
+			console.error(err);
+		}
+	}
 }
 
-export const profileService = new ProfileService()
+export const profileService = new ProfileService();

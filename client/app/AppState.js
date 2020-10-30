@@ -7,6 +7,8 @@ class AppState extends EventEmitter {
 	profile = {};
 	/** @type {Character[]} */
 	characters = [];
+
+	userCharacters = [];
 }
 
 export const ProxyState = new Proxy(new AppState(), {

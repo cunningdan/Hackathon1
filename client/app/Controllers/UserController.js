@@ -2,60 +2,24 @@ import { ProxyState } from '../AppState.js';
 import { userService } from '../Services/UserService.js';
 
 //Private
-function _draw() {
-	console.log(ProxyState.characters);
+function _drawCharactersByUser(userId) {
 	let template = '';
-	ProxyState.characters.forEach((c) => (template += c.Template));
-	if (ProxyState.characters.find((c) => c.class == 'wizard')) {
-		document.getElementById('wizardCharacters').innerHTML = template;
-	}
-	if (ProxyState.characters.find((c) => c.class == 'fighter')) {
-		document.getElementById('fighterCharacters').innerHTML = template;
-	}
-	if (ProxyState.characters.find((c) => c.class == 'ranger')) {
-		document.getElementById('rangerCharacters').innerHTML = template;
-	}
-	if (ProxyState.characters.find((c) => c.class == 'cleric')) {
-		document.getElementById('clericCharacters').innerHTML = template;
-	}
-	if (ProxyState.characters.find((c) => c.class == 'druid')) {
-		document.getElementById('druidCharacters').innerHTML = template;
-	}
+	// ProxyState.characters.find(c => c.userId == userId)
+	ProxyState.userCharacters.forEach((c) => (template += c.Template));
+	document.getElementById('userTemplate').innerHTML = template;
 }
 
-// function _drawCharactersByUser(userId) {
-// 	let template = ''
-// 	ProxyState.characters.find(c => c.userId == userId)
-// }
-
 //Public
-export default class CharacterController {
+export default class UserController {
 	constructor() {
-		console.log('character controller');
-		ProxyState.on('characters', _draw);
-		this.getCharacters();
+		ProxyState.on('userCharacters', _drawCharactersByUser);
 	}
 
-	getCharacters() {
+	getUserCharacters() {
 		try {
-			characterService.getCharacters();
+			userService.getUserCharacters();
 		} catch (error) {
 			console.error(error);
 		}
-	}
-
-	addCharacter(e) {
-		let form = e.target;
-		e.preventDefault();
-		let newCharacter = {
-			name  : form.name.value,
-			class : form.class.value
-		};
-		try {
-			characterService.addCharacter(newCharacter);
-		} catch (error) {
-			console.error(error);
-		}
-		form.reset();
 	}
 }
