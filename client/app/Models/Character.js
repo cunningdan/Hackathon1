@@ -6,7 +6,7 @@ export default class Character {
 		this.userId = data.userId;
 		this.skills = data.skills;
 		this.img = data.img;
-		this.profileName = data.profile.username;
+		this.profileName = data.profile.name;
 	}
 	// <img src="${this.img}" class="d-block img-fluid" alt="...">
 
