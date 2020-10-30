@@ -5,11 +5,8 @@ class CharacterService {
 	constructor() {
 		console.log('character service');
 	}
-	addValue() {
-		ProxyState.characters = [
-			...ProxyState.characters,
-			new Character({ title: Math.random() })
-		];
+	getCharacters() {
+		ProxyState.characters = 
 	}
 }
 

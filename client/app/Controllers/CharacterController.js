@@ -29,7 +29,7 @@ export default class CharacterController {
 		characterService.getCharacters();
 	}
 
-	addCharacter() {
-		characterService.addCharacter();
-	}
+	// addCharacter() {
+	// 	characterService.addCharacter();
+	// }
 }
