@@ -1,17 +1,20 @@
 import BaseController from "../utils/BaseController";
 import { characterService } from "../services/CharacterService";
+import { Auth0Provider } from "@bcwdev/auth0provider";
 
 export class CharacterController extends BaseController {
     constructor() {
         super("api/characters");
         this.router
             .get("", this.getAll)
+            .get("/:characterId", this.findOne)
+            .use(Auth0Provider.getAuthorizedUserInfo)
             .post("", this.create)
             .put("/:id", this.edit)
             .delete("/:id", this.delete)
-            .get("/:characterId", this.findOne)
 
     }
+
     async getAll(req, res, next) {
         try {
             res.send(await characterService.getAll(req.query));

@@ -67,21 +67,21 @@ class ProfileService {
    */
   async getProfile(user) {
     let profile = await dbContext.Profile.findOne({
-      _id: user.id
+      _id: user
     });
     profile = await createProfileIfNeeded(profile, user);
     await mergeSubsIfNeeded(profile, user);
     return profile;
   }
   /**
-​    * Updates profile with the request body, will only allow changes to editable fields
-​    * @param {any} user Auth0 user object
-​    * @param {any} body Updates to apply to user object
-​    */
+     * Updates profile with the request body, will only allow changes to editable fields
+     * @param {any} user Auth0 user object
+     * @param {any} body Updates to apply to user object
+     */
   async updateProfile(user, body) {
     let update = sanitizeBody(body);
     let profile = await dbContext.Profile.findOneAndUpdate(
-      { _id: user.id },
+      { _id: user },
       { $set: update },
       { runValidators: true, setDefaultsOnInsert: true, new: true }
     );

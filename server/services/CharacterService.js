@@ -24,6 +24,9 @@ class CharacterService {
     async findById(id) {
         return await dbContext.Characters.findById(id).populate("profile")
     }
+    async getCharactersById(id) {
+        return await dbContext.Characters.find({ profile: id })
+    }
 }
 
 export const characterService = new CharacterService()
