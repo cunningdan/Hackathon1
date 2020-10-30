@@ -45,17 +45,16 @@ export default class CharacterController {
 	}
 
 	addCharacter(e) {
-		let form = e.target;
 		e.preventDefault();
+		let formData = e.target;
 		let newCharacter = {
-			name  : form.name.value,
-			class : form.class.value
+			name  : formData.name.value,
+			class : formData.class.value
 		};
 		try {
 			characterService.addCharacter(newCharacter);
 		} catch (error) {
 			console.error(error);
 		}
-		form.reset();
 	}
 }

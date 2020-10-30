@@ -1,8 +1,8 @@
 import { ProxyState } from '../AppState.js';
-import User from '../Models/User.js';
-import Character from '../Models/Character.js';
-import { api } from './AxiosService.js';
-import { profileService } from './ProfileService.js';
+// import User from '../Models/User.js';
+// import Character from '../Models/Character.js';
+// import { api } from './AxiosService.js';
+// import { profileService } from './ProfileService.js';
 
 class UserService {
 	constructor() {
@@ -10,7 +10,8 @@ class UserService {
 	}
 	getUserCharacters() {
 		// ProxyState.characters = await api.get('characters').data;
-		ProxyState.userCharacters = ProxyState.characters.filter((c) => c.profileName == ProxyState.profile.id);
+		ProxyState.userCharacters = ProxyState.characters.filter((c) => c.profileName == ProxyState.profile.name);
+		console.log(ProxyState.characters);
 		console.log(ProxyState.userCharacters);
 		// let res = await api.get('characters');
 		// console.log(res);

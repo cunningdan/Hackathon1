@@ -27,7 +27,7 @@
             <button type="button" onclick="app.userController.getUserCharacters()" class="btn btn-primary" data-toggle="modal" data-target="#profileModal">
                 Profile Modal
             </button>
-            <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade text-dark" id="profileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div id="userTemplate" class="modal-content">
                         <!-- user template -->
@@ -40,7 +40,7 @@
     </header>
     <main class="container-fluid">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
-            Launch demo modal
+            Add A Character
         </button>
         <div id="modal" class="modal" tabindex="-1">
         <div class="modal-dialog">
@@ -51,15 +51,15 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form type="submit" >
+            <div id="form" class="modal-body">
+                <form type="submit" onsubmit="app.characterController.addCharacter(event)">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" placeholder="name">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="name">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="class" placeholder="class">
+                        <input type="text" class="form-control" name="class" id="class" placeholder="class">
                     </div>
-                    <button class="btn btn-primary" type="submit" onclick="app.characterController.addCharacter(event)">Submit</button>
+                    <button class="btn btn-primary" type="submit">Submit</button>
                 </form>
             </div>
             </div>
