@@ -11,7 +11,7 @@ export default class Character {
 	get Template() {
 		return /*html*/ `
         <div class="carousel-item active d-flex justify-content-center">
-            <img src="//placehold.it/400" class="d-block img-fluid  w-75" alt="...">
+            <img src="//placehold.it/400" class="d-block img-fluid" alt="...">
         </div>
         `;
 	}

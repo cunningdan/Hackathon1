@@ -3,17 +3,22 @@ import { characterService } from '../Services/CharacterService.js';
 
 //Private
 function _draw() {
+	console.log(ProxyState.characters);
 	let template = '';
 	ProxyState.characters.forEach((c) => (template += c.Template));
 	if (ProxyState.characters.find((c) => c.class == 'wizard')) {
 		document.getElementById('wizardCharacters').innerHTML = template;
-	} else if (ProxyState.characters.find((c) => c.class == 'fighter')) {
+	}
+	if (ProxyState.characters.find((c) => c.class == 'fighter')) {
 		document.getElementById('fighterCharacters').innerHTML = template;
-	} else if (ProxyState.characters.find((c) => c.class == 'ranger')) {
+	}
+	if (ProxyState.characters.find((c) => c.class == 'ranger')) {
 		document.getElementById('rangerCharacters').innerHTML = template;
-	} else if (ProxyState.characters.find((c) => c.class == 'cleric')) {
+	}
+	if (ProxyState.characters.find((c) => c.class == 'cleric')) {
 		document.getElementById('clericCharacters').innerHTML = template;
-	} else if (ProxyState.characters.find((c) => c.class == 'druid')) {
+	}
+	if (ProxyState.characters.find((c) => c.class == 'druid')) {
 		document.getElementById('druidCharacters').innerHTML = template;
 	}
 }
@@ -23,13 +28,26 @@ export default class CharacterController {
 	constructor() {
 		console.log('character controller');
 		ProxyState.on('characters', _draw);
+		this.getCharacters();
 	}
 
 	getCharacters() {
-		characterService.getCharacters();
+		try {
+			characterService.getCharacters();
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
-	// addCharacter() {
-	// 	characterService.addCharacter();
-	// }
+	addCharacter(e) {
+		let form = e.target;
+		e.preventDefault();
+		let newCharacter = {}
+		try {
+			characterService.addCharacter();
+		} catch (error) {
+			console.error(error);
+		}
+		form.reset();
+	}
 }
