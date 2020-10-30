@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
-import ValueSchema from "../models/Value";
+import CharacterSchema from "../models/Character";
 import ProfileSchema from "../models/Profile";
+import CommentSchema from "../models/Comment"
 
 class DbContext {
-  Values = mongoose.model("Value", ValueSchema);
+  Characters = mongoose.model("Character", CharacterSchema);
   Profile = mongoose.model("Profile", ProfileSchema);
+  Comments = mongoose.model("Comment", CommentSchema)
 }
 
 export const dbContext = new DbContext();
