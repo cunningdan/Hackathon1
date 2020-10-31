@@ -26,8 +26,8 @@ export class CharacterController extends BaseController {
     async create(req, res, next) {
         try {
             req.body.profile = req.userInfo.id;
-            let data = await characterService.create(req.body)
-            res.send(data);
+            res.send(await characterService.create(req.body))
+
         } catch (error) {
             next(error);
         }
