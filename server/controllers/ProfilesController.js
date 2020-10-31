@@ -5,13 +5,17 @@ import BaseController from "../utils/BaseController";
 
 export class ProfilesController extends BaseController {
   constructor() {
-    super("api/profiles");
+    super("api");
     this.router
-      .use(Auth0Provider.getAuthorizedUserInfo)
-      .get("/:id/characters", this.getCharactersByProfile)
-      .put("/:id", this.editProfile)
-      .get("/:id", this.getUserProfile)
-      .get("", this.getProfiles)
+      // the logged in user
+      .use("/profile", Auth0Provider.getAuthorizedUserInfo)
+      .get("/profile", this.getUserProfile) // leave me
+      .put("/profile", this.editProfile)
+
+      /// api for other people
+      .use("/profiles", Auth0Provider.getAuthorizedUserInfo)
+      .get("/profiles", this.getProfiles)
+      .get("/profiles/:id/characters", this.getCharactersByProfile)
   }
   async getProfiles(req, res, next) {
     try {
