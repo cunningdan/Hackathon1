@@ -14,6 +14,15 @@ class CommentService {
         console.log(data);
         return data
     }
+    async getVote(id) {
+        return await dbContext.Comments.findById(id)
+    }
+    async upVote(id) {
+        return await dbContext.Comments.findByIdAndUpdate(id, { $inc: { vote: 1 } })
+    }
+    async downVote(id) {
+        return await dbContext.Comments.findByIdAndUpdate(id, { $inc: { vote: -1 } })
+    }
     async delete(id, userId) {
         let commentsProfile = await dbContext.Comments.findById(id)
         //@ts-ignore

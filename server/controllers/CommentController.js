@@ -13,8 +13,30 @@ export class CommentController extends BaseController {
             .put("/:id", this.edit)
             .delete("/:id", this.delete)
             .get("/:commentId", this.findOne)
+            .get("", this.getVote)
+            .put("/:commentId", this.upVote, this.downVote)
 
-
+    }
+    async getVote(req, res, next) {
+        try {
+            res.send(await commentService.getVote(req.params.commentId))
+        } catch (err) {
+            next(err)
+        }
+    }
+    async upVote(req, res, next) {
+        try {
+            res.send(await commentService.upVote(req.params.commentId))
+        } catch (err) {
+            next(err)
+        }
+    }
+    async downVote(req, res, next) {
+        try {
+            res.send(await commentService.upVote(req.params.commentId))
+        } catch (err) {
+            next(err)
+        }
     }
     async getAll(req, res, next) {
         try {
