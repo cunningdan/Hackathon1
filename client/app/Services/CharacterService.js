@@ -14,8 +14,9 @@ class CharacterService {
 	}
 
 	async addCharacter(newCharacter) {
-		return await api.post('characters', newCharacter);
+		let res = await api.post('characters', newCharacter);
 		this.getCharacters();
+		return res;
 	}
 }
 
