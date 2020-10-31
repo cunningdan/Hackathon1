@@ -1,4 +1,5 @@
 import Character from './Models/Character.js';
+import Comment from './Models/Comment.js';
 import { EventEmitter } from './Utils/EventEmitter.js';
 import { isValidProp } from './Utils/isValidProp.js';
 
@@ -16,6 +17,12 @@ class AppState extends EventEmitter {
 
 	/** @type {Character}*/
 	selectedCharacter = null;
+
+	/**@type {Comment[]} */
+	comments = [];
+
+	/**@type {Comment[]} */
+	selectedComments = [];
 }
 
 export const ProxyState = new Proxy(new AppState(), {

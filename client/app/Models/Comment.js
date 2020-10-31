@@ -1,14 +1,12 @@
-// export default class Character {
-// 	constructor(data) {
-// 		this.name = data.name;
-// 		this.class = data.class;
-// 		this.id = data._id;
-// 		this.userId = data.userId;
-// 		this.skills = data.skills;
-// 		this.img = data.img;
-// 		this.profileName = data.profile.name;
-// 	}
-// 	// <img src="${this.img}" class="d-block img-fluid" alt="...">
+export default class Comment {
+	constructor(data) {
+		this.text = data.text;
+		this.vote = data.vote;
+		this.characterId = data.characterId;
+		this.profileName = data.profile.name;
+		this.profileId = data.profile.id;
+	}
+	// 	// <img src="${this.img}" class="d-block img-fluid" alt="...">
 
 	get CommentTemplate() {
 		return /*html*/ `

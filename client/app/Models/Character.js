@@ -90,7 +90,7 @@ export default class Character {
            <div class="row">
                 <div class="col-10" offset="1">
                     <form action="submit">
-                        <input type="textarea"/>
+                        <input name="text" type="textarea"/>
                         <button type="submit" onclick="app.commentController.addComment(event)">Comment</button>
                     </form>
                 </div>

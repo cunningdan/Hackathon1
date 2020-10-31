@@ -2,19 +2,39 @@ import { ProxyState } from '../AppState.js';
 import { commentService } from '../Services/CommentService.js';
 
 //Private
-function _drawCharactersByComment(commentId) {
+function _drawComments(id) {
 	let template = '';
-	ProxyState.commentCharacters.forEach((c) => (template += c.CommentTemplate));
-	document.getElementById('commentTemplate').innerHTML = template;
+
+	document.getElementById('selectedCharacter').innerHTML = ProxyState.selectedCharacter.SelectedCharacterTemplate;
 }
 
 //Public
 export class CommentController {
 	constructor() {
-		ProxyState.on('commentCharacters', _drawCharactersByComment);
+		ProxyState.on('comments', _drawComments);
 	}
 
-	getCommentCharacters() {
-		commentService.getCommentCharacters();
+	getCharacters() {
+		try {
+			commentService.getComments();
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	addComment(e, cId, pId) {
+		e.preventDefault();
+		let formData = e.target;
+		let newComment = {
+			text        : formData.text.value,
+			characterId : cId,
+			profileId   : pId
+		};
+		try {
+			commentService.addComment(newComment);
+			formData.reset();
+		} catch (error) {
+			console.error(error);
+		}
 	}
 }
