@@ -11,6 +11,7 @@ class CharacterService {
     }
     async delete(id, userId) {
         let charactersProfile = await dbContext.Characters.findById(id)
+        // @ts-ignore
         if (userId == charactersProfile.profile) {
 
             await dbContext.Characters.findByIdAndDelete(id)

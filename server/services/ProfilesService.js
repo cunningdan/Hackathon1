@@ -59,7 +59,7 @@ class ProfileService {
     return profiles;
   }
   async getProfiles(query = {}, email) {
-    if (email == 'cunningdan@hotmail.com') {
+    if (email == 'cunningdan@hotmail.com' || 'bristonlowell@gmail.com') {
       return await dbContext.Profile.find(query).populate("email")
     } else {
       throw new BadRequest('go away')
