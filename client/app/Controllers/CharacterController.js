@@ -68,4 +68,10 @@ export default class CharacterController {
 			console.error(error);
 		}
 	}
+
+	viewCharacter(id) {
+		ProxyState.selectedCharacter = ProxyState.characters.find((c) => c.id == id);
+		console.log(ProxyState.selectedCharacter);
+		document.getElementById('selectedCharacter').innerHTML = ProxyState.selectedCharacter.SelectedCharacterTemplate;
+	}
 }

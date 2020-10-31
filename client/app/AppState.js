@@ -9,6 +9,9 @@ class AppState extends EventEmitter {
 	characters = [];
 
 	userCharacters = [];
+
+	/** @type {Character}*/
+	selectedCharacter = null;
 }
 
 export const ProxyState = new Proxy(new AppState(), {
