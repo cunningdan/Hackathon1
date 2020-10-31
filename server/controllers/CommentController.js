@@ -14,6 +14,7 @@ export class CommentController extends BaseController {
             .delete("/:id", this.delete)
             .get("/:commentId", this.findOne)
 
+
     }
     async getAll(req, res, next) {
         try {

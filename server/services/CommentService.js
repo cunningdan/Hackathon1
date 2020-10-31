@@ -9,6 +9,11 @@ class CommentService {
     async create(body) {
         return await dbContext.Comments.create(body)
     }
+    async getCommentbyCharacter(id) {
+        let data = await dbContext.Comments.find({ characterId: id })
+        console.log(data);
+        return data
+    }
     async delete(id, userId) {
         let commentsProfile = await dbContext.Comments.findById(id)
         //@ts-ignore

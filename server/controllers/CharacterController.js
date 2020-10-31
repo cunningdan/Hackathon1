@@ -1,6 +1,7 @@
 import BaseController from '../utils/BaseController';
 import { characterService } from '../services/CharacterService';
 import { Auth0Provider } from '@bcwdev/auth0provider';
+import { commentService } from '../services/CommentService';
 
 export class CharacterController extends BaseController {
     constructor() {
@@ -8,14 +9,19 @@ export class CharacterController extends BaseController {
         this.router
             .get('', this.getAll)
             .get('/:characterId', this.findOne)
+            .get('/:characterId/comments/', this.getCommentsbyCharacter)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.create)
             .put('/:id', this.edit)
-            .delete('/:id', this.delete);
+            .delete('/:id', this.delete)
     }
-
-
-
+    async getCommentsbyCharacter(req, res, next) {
+        try {
+            res.send(await commentService.getCommentbyCharacter(req.params.characterId))
+        } catch (err) {
+            next(err)
+        }
+    }
     async getAll(req, res, next) {
         try {
             res.send(await characterService.getAll(req.query));
