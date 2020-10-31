@@ -6,6 +6,7 @@ function _drawCharactersByUser(userId) {
 	let template = '';
 	ProxyState.userCharacters.forEach((c) => (template += c.UserTemplate));
 	document.getElementById('userTemplate').innerHTML = template;
+	document.getElementById('username').innerHTML = ProxyState.profile.name;
 }
 
 //Public

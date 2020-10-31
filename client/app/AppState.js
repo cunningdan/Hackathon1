@@ -18,7 +18,6 @@ class AppState extends EventEmitter {
 	/** @type {Character}*/
 	selectedCharacter = null;
 
-	/**@type {Comment[]} */
 	comments = [];
 
 	/**@type {Comment[]} */

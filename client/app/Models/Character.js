@@ -89,12 +89,13 @@ export default class Character {
            </div>
            <div class="row">
                 <div class="col-10" offset="1">
-                    <form action="submit">
-                        <input name="text" type="textarea"/>
-                        <button type="submit" onclick="app.commentController.addComment(event)">Comment</button>
+                    <form action="submit" onsubmit="app.commentController.addComment(event, '${this.id}', '${this
+			.profileId}')">
+                        <input name="commentText" placeholder="comment" type="textarea"/>
+                        <button type="submit" onclick="">Comment</button>
                     </form>
                 </div>
-                <div id="comments">
+                <div id="comments" class="">
                 
                 </div>
            </div>
@@ -104,25 +105,15 @@ export default class Character {
 
 	get UserTemplate() {
 		return /*html*/ `
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">username</h5>
-            <img src="user img" alt="">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <h5>Characters</h5>
-            <ul id="characterList">
+        <ul id="characterList">
                 ${this.CharacterNameTemplate}
             </ul>
-        </div>
         `;
 	}
 
 	get CharacterNameTemplate() {
 		return /*html*/ `
-        <li>character name</li>
+        <li>${this.name}</li>
         `;
 	}
 }
