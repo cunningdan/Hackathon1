@@ -2,6 +2,7 @@ import { ProxyState } from '../AppState.js';
 // import User from '../Models/User.js';
 // import Character from '../Models/Character.js';
 import { api } from './AxiosService.js';
+import Comment from '../Models/Comment.js';
 // import { profileService } from './ProfileService.js';
 
 class CommentService {
@@ -13,8 +14,18 @@ class CommentService {
 	}
 	async addComment(newComment) {
 		let res = await api.post('comments', newComment);
-		this.getComments();
+		this.getComments(res.data.characterId);
 		return res;
+	}
+
+	async like(commentId) {
+		let res = await api.put('comments/' + commentId + '/vote=1/', vote++);
+		this.getComments(res.characterId);
+	}
+
+	async dislike(commentId) {
+		let res = await api.put('comments/' + commentId + '/vote=-1/', vote--);
+		this.getComments(res.characterId);
 	}
 }
 export const commentService = new CommentService();

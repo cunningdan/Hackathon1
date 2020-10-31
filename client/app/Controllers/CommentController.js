@@ -14,16 +14,33 @@ export class CommentController {
 		ProxyState.on('comments', _drawComments);
 	}
 
+	like(commentId) {
+		try {
+			commentService.like(commentId);
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	dislike(commentId) {
+		try {
+			commentService.dislike(commentId);
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
 	addComment(e, cId, pId) {
 		e.preventDefault();
 		let formData = e.target;
 		let newComment = {
-			text        : formData.text.value,
+			text        : formData.commentText.value,
 			characterId : cId,
 			profileId   : pId
 		};
 		try {
 			commentService.addComment(newComment);
+			console.log(newComment);
 			formData.reset();
 		} catch (error) {
 			console.error(error);
