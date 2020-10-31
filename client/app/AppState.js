@@ -5,9 +5,13 @@ import { isValidProp } from './Utils/isValidProp.js';
 class AppState extends EventEmitter {
 	user = {};
 	profile = {};
+
+	profiles = [];
+
 	/** @type {Character[]} */
 	characters = [];
 
+	/** @type {Character[]}*/
 	userCharacters = [];
 
 	/** @type {Character}*/
