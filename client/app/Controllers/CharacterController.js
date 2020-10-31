@@ -57,6 +57,7 @@ export default class CharacterController {
 		};
 		try {
 			characterService.addCharacter(newCharacter);
+			formData.reset();
 		} catch (error) {
 			console.error(error);
 		}

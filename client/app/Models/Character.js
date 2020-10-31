@@ -114,7 +114,7 @@ export default class Character {
         <div class="modal-body">
             <h5>Characters</h5>
             <ul id="characterList">
-                ${CharacterNameTemplate()}
+                ${this.CharacterNameTemplate}
             </ul>
         </div>
         `;

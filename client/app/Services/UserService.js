@@ -8,7 +8,7 @@ class UserService {
 	constructor() {}
 	getUserCharacters() {
 		// ProxyState.characters = await api.get('characters').data;
-		debugger;
+		// debugger;
 		ProxyState.userCharacters = ProxyState.characters.filter((c) => c.profileId == ProxyState.profile.id);
 		console.log(ProxyState.profile.id);
 	}
