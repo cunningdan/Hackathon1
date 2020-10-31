@@ -21,7 +21,7 @@ class CommentService {
         if (query.vote != 1 && query.vote != -1) {
             throw new BadRequest('no')
         }
-        return await dbContext.Comments.findByIdAndUpdate(id, { $inc: { vote: query.vote } }, { new: true })
+        return await dbContext.Comments.findByIdAndUpdate(id, { $inc: { vote: query.vote } }, { new: true }).populate('profile')
         // if (query.) {
         //     return await dbContext.Comments.findByIdAndUpdate(id, { $inc: { vote: 1 } })
         // }
