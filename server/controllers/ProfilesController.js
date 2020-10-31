@@ -27,7 +27,7 @@ export class ProfilesController extends BaseController {
   }
   async getUserProfile(req, res, next) {
     try {
-      let profile = await profilesService.getProfile(req.params.id);
+      let profile = await profilesService.getProfile(req.userInfo.id);
       res.send(profile);
     } catch (error) {
       next(error);
