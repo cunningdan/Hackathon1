@@ -14,6 +14,21 @@ class CommentService {
         console.log(data);
         return data
     }
+    async getVote(id) {
+        return await dbContext.Comments.findById(id)
+    }
+    async vote(id, query) {
+        if (query.vote != 1 && query.vote != -1) {
+            throw new BadRequest('no')
+        }
+        return await dbContext.Comments.findByIdAndUpdate(id, { $inc: { vote: query.vote } }, { new: true })
+        // if (query.) {
+        //     return await dbContext.Comments.findByIdAndUpdate(id, { $inc: { vote: 1 } })
+        // }
+        // else {
+        //     return await dbContext.Comments.findByIdAndUpdate(id, { $inc: { vote: -1 } })
+        // }
+    }
     async delete(id, userId) {
         let commentsProfile = await dbContext.Comments.findById(id)
         //@ts-ignore
@@ -26,10 +41,8 @@ class CommentService {
         } return this.getAll()
     }
     async edit(id, body) {
-        await dbContext.Comments.findByIdAndUpdate(id, body, { new: true })
-        if (!Comment) {
-            throw new BadRequest("No found Comment")
-        } return this.getAll()
+        return await dbContext.Comments.findByIdAndUpdate(id, body, { new: true })
+
     }
     async findById(id) {
         return await dbContext.Comments.findById(id).populate("userId")
