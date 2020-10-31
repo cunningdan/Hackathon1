@@ -8,13 +8,13 @@ export class CommentController extends BaseController {
         super("api/comments");
         this.router
             .get("", this.getAll)
+            .put("/:commentId/vote", this.vote)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post("", this.create)
             .put("/:id", this.edit)
             .delete("/:id", this.delete)
             .get("/:commentId", this.findOne)
             .get("", this.getVote)
-            .put("/:commentId/vote", this.vote)
 
     }
     async getVote(req, res, next) {
