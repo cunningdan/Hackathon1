@@ -19,12 +19,12 @@ class CommentService {
 	}
 
 	async like(commentId) {
-		let res = await api.put('comments/' + commentId + '/vote=1/', vote++);
+		let res = await api.put('comments/' + commentId + 'vote?vote=1');
 		this.getComments(res.characterId);
 	}
 
 	async dislike(commentId) {
-		let res = await api.put('comments/' + commentId + '/vote=-1/', vote--);
+		let res = await api.put('comments/' + commentId + 'vote?vote=-1');
 		this.getComments(res.characterId);
 	}
 }
