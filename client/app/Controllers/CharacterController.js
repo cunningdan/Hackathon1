@@ -4,23 +4,34 @@ import { characterService } from '../Services/CharacterService.js';
 //Private
 function _draw() {
 	console.log(ProxyState.characters);
-	let template = '';
-	ProxyState.characters.forEach((c) => (template += c.Template));
-	if (ProxyState.characters.find((c) => c.class == 'wizard')) {
-		document.getElementById('wizardCharacters').innerHTML = template;
-	}
-	if (ProxyState.characters.find((c) => c.class == 'fighter')) {
-		document.getElementById('fighterCharacters').innerHTML = template;
-	}
-	if (ProxyState.characters.find((c) => c.class == 'ranger')) {
-		document.getElementById('rangerCharacters').innerHTML = template;
-	}
-	if (ProxyState.characters.find((c) => c.class == 'cleric')) {
-		document.getElementById('clericCharacters').innerHTML = template;
-	}
-	if (ProxyState.characters.find((c) => c.class == 'druid')) {
-		document.getElementById('druidCharacters').innerHTML = template;
-	}
+	// let template = '';
+	ProxyState.characters.forEach((c) => {
+		if (c.class == 'wizard') {
+			console.log(c);
+			// ProxyState.characters.forEach((c) => (template += c.WizardTemplate));
+			document.getElementById('wizardCharacters').innerHTML += c.Template;
+		}
+		if (c.class == 'fighter') {
+			console.log(c);
+			// ProxyState.characters.forEach((c) => (template += c.WizardTemplate));
+			document.getElementById('fighterCharacters').innerHTML += c.Template;
+		}
+		if (c.class == 'ranger') {
+			console.log(c);
+			// ProxyState.characters.forEach((c) => (template += c.WizardTemplate));
+			document.getElementById('rangerCharacters').innerHTML += c.Template;
+		}
+		if (c.class == 'cleric') {
+			console.log(c);
+			// ProxyState.characters.forEach((c) => (template += c.WizardTemplate));
+			document.getElementById('clericCharacters').innerHTML += c.Template;
+		}
+		if (c.class == 'druid') {
+			console.log(c);
+			// ProxyState.characters.forEach((c) => (template += c.WizardTemplate));
+			document.getElementById('druidCharacters').innerHTML += c.Template;
+		}
+	});
 }
 
 // function _drawCharactersByUser(userId) {
@@ -45,17 +56,16 @@ export default class CharacterController {
 	}
 
 	addCharacter(e) {
-		let form = e.target;
 		e.preventDefault();
+		let formData = e.target;
 		let newCharacter = {
-			name  : form.name.value,
-			class : form.class.value
+			name  : formData.name.value,
+			class : formData.class.value
 		};
 		try {
 			characterService.addCharacter(newCharacter);
 		} catch (error) {
 			console.error(error);
 		}
-		form.reset();
 	}
 }
