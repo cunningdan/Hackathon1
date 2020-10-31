@@ -10,7 +10,7 @@ class CommentService {
         return await dbContext.Comments.create(body)
     }
     async getCommentbyCharacter(id) {
-        let data = await dbContext.Comments.find({ characterId: id })
+        let data = await dbContext.Comments.find({ characterId: id }).populate('profile')
         console.log(data);
         return data
     }
