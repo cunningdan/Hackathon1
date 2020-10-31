@@ -11,11 +11,10 @@ export default class Comment {
 	get CommentTemplate() {
 		return /*html*/ `
         <div class="col-4" offset="1">
-            <img src="user img" alt=""/>
-            <h5>username of commenter</h5>
+            <h5>${this.profileName}</h5>
         </div>
         <div class="col-6">
-            <p>comment body</p>
+            <p>${this.text}</p>
         </div>
 
         `;

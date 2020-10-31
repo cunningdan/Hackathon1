@@ -1,5 +1,6 @@
 import { ProxyState } from '../AppState.js';
 import { characterService } from '../Services/CharacterService.js';
+import { commentService } from '../Services/CommentService.js';
 
 //Private
 function _draw() {
@@ -64,6 +65,11 @@ export default class CharacterController {
 	}
 
 	viewCharacter(id) {
+		try {
+			commentService.getComments(id);
+		} catch (error) {
+			console.error(error);
+		}
 		ProxyState.selectedCharacter = ProxyState.characters.find((c) => c.id == id);
 		document.getElementById('selectedCharacter').innerHTML = ProxyState.selectedCharacter.SelectedCharacterTemplate;
 	}
