@@ -9,11 +9,15 @@ class CharacterService {
     async create(body) {
         return await dbContext.Characters.create(body)
     }
-    async delete(id) {
-        await dbContext.Characters.findByIdAndDelete(id)
-        if (!Character) {
-            throw new BadRequest("No found Character")
-        } return this.getAll()
+    async delete(id, userId) {
+        let charactersProfile = await dbContext.Characters.findById(id)
+        if (userId == charactersProfile.profile) {
+
+            await dbContext.Characters.findByIdAndDelete(id)
+            if (!Character) {
+                throw new BadRequest("No found Character")
+            } return this.getAll()
+        } throw new BadRequest("Access denied")
     }
     async edit(id, body) {
         await dbContext.Characters.findByIdAndUpdate(id, body, { new: true })

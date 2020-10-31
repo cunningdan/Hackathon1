@@ -32,7 +32,7 @@ export class CharacterController extends BaseController {
     }
     async delete(req, res, next) {
         try {
-            res.send(await characterService.delete(req.params.id))
+            res.send(await characterService.delete(req.params.id, req.userInfo.id))
         } catch (err) {
             next(err)
         }
