@@ -14,8 +14,8 @@ export default class Comment {
 		<div class="col-4" offset="1">
 			<h5>${this.profileName}</h5>
 			<p>Likes: ${this.vote}</p>
-			<button onclick="app.commentController.like(${this.id})">Updoot</button>
-			<button onclick="app.commentController.dislike(${this.id})">Downtoot</button>
+			<button onclick="app.commentController.like('${this.id}')">Updoot</button>
+			<button onclick="app.commentController.dislike('${this.id}')">Downtoot</button>
         </div>
         <div class="col-6">
             <p>${this.text}</p>

@@ -19,13 +19,17 @@ class CommentService {
 	}
 
 	async like(commentId) {
-		let res = await api.put('comments/' + commentId + 'vote?vote=1');
-		this.getComments(res.characterId);
+		let res = await api.put('comments/' + commentId + '/vote?vote=1');
+		let i = ProxyState.comments.findIndex((c) => c.id == commentId);
+		ProxyState.comments.splice(i, 1, new Comment(res.data));
+		ProxyState.comments = ProxyState.comments;
 	}
 
 	async dislike(commentId) {
-		let res = await api.put('comments/' + commentId + 'vote?vote=-1');
-		this.getComments(res.characterId);
+		let res = await api.put('comments/' + commentId + '/vote?vote=-1');
+		let i = ProxyState.comments.findIndex((c) => c.id == commentId);
+		ProxyState.comments.splice(i, 1, new Comment(res.data));
+		ProxyState.comments = ProxyState.comments;
 	}
 }
 export const commentService = new CommentService();
