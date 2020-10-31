@@ -5,18 +5,12 @@ import { ProxyState } from '../AppState.js';
 // import { profileService } from './ProfileService.js';
 
 class UserService {
-	constructor() {
-		console.log('user service');
-	}
+	constructor() {}
 	getUserCharacters() {
 		// ProxyState.characters = await api.get('characters').data;
-		ProxyState.userCharacters = ProxyState.characters.filter((c) => c.profileName == ProxyState.profile.name);
-		console.log(ProxyState.characters);
-		console.log(ProxyState.userCharacters);
-		// let res = await api.get('characters');
-		// console.log(res);
-		// ProxyState.userCharacters = res.data.map((rawCharacterData) => new Character(rawCharacterData));
-		// console.log(res);
+		debugger;
+		ProxyState.userCharacters = ProxyState.characters.filter((c) => c.profileId == ProxyState.profile.id);
+		console.log(ProxyState.profile.id);
 	}
 }
 
