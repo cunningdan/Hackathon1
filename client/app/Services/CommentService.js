@@ -7,16 +7,14 @@ import { api } from './AxiosService.js';
 class CommentService {
 	constructor() {}
 
-	async getComments() {
-		let res = await api.get('comments');
+	async getComments(charId) {
+		let res = await api.get('/characters/' + charId + '/comments');
 		ProxyState.comments = res.data.map((rawCommentData) => new Comment(rawCommentData));
 	}
 	async addComment(newComment) {
 		let res = await api.post('comments', newComment);
 		this.getComments();
 		return res;
-
-		ProxyState.selectedComments.push(comments);
 	}
 }
 export const commentService = new CommentService();
