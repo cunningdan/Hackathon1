@@ -9,7 +9,12 @@ class CommentService {
     async create(body) {
         return await dbContext.Comments.create(body)
     }
-    async delete(id) {
+    async delete(id, userId) {
+        let commentsProfile = await dbContext.Comments.findById(id)
+        //@ts-ignore
+        if (userId == commentsProfile.profile && userId == commentsProfile.characterId) {
+            await dbContext.Comments.findByIdAndDelete(id)
+        }
         await dbContext.Comments.findByIdAndDelete(id)
         if (!Comment) {
             throw new BadRequest("No found Comment")

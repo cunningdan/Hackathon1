@@ -7,7 +7,7 @@ const Comment = new Schema(
         text: { type: String, required: true },
         characterId: { type: ObjectId, ref: "Character", required: true },
         vote: { type: Number },
-        userId: { type: ObjectId, ref: "User", required: true }
+        profile: { type: String, ref: "Profile", required: true }
     },
     { timestamps: true, toJSON: { virtuals: true } }
 )
